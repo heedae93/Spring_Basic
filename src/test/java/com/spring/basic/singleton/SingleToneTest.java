@@ -5,6 +5,7 @@ import com.spring.basic.member.MemberService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class SingleToneTest {
 
@@ -40,6 +41,23 @@ public class SingleToneTest {
         System.out.println("singleToneService2 = " + singleToneService2); // com.spring.basic.singleton.SingleToneService@7eecb5b8
 
         Assertions.assertThat(singleToneService1).isSameAs(singleToneService2);
+    }
+
+
+    @Test
+    @DisplayName("스프링 컨테이너와 싱글톤")
+    void springContainer() {
+        AppConfig appConfig = new AppConfig();
+
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+
+        MemberService memberService1 = ac.getBean("memberService", MemberService.class);
+        MemberService memberService2 = ac.getBean("memberService", MemberService.class);
+
+        // 3. 참조값이 같은 것을 확인
+        System.out.println("memberService1 = " + memberService1); // memberService1 = com.spring.basic.member.MemberServiceImpl@4f8969b0
+        System.out.println("memberService2 = " + memberService2); // memberService2 = com.spring.basic.member.MemberServiceImpl@4f8969b0
+        Assertions.assertThat(memberService1).isSameAs(memberService2);
     }
 
 }
