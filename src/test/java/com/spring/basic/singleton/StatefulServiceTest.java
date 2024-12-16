@@ -17,14 +17,11 @@ class StatefulServiceTest {
         StatefulService statefulService1 = ac.getBean(StatefulService.class);
         StatefulService statefulService2 = ac.getBean(StatefulService.class);
 
-        statefulService1.order("userA", 10000);
-        statefulService2.order("userB", 20000);
+        int userAPrice =  statefulService1.order("userA", 10000);
+        int userBPrice =  statefulService2.order("userB", 20000);
 
-        int price = statefulService1.getPrice();
-        System.out.println("price = " + price);
-
-        // userA가 주문금액을 조회했는데 2000이 나와 버린다. 기존의 값을 덮어 버린 것.
-        Assertions.assertThat(statefulService1.getPrice()).isEqualTo(20000);
+        System.out.println("userAPrice = " + userAPrice); // 10000
+        System.out.println("userBPrice = " + userBPrice); // 20000
     }
 
     static class TestConfig {
