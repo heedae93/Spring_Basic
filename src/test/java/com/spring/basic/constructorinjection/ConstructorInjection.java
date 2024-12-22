@@ -4,13 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class ConstructorInjection  {
 
-    private  final TestInterface testInterface;
+    private   TestInterface testInterface;
 
     public ConstructorInjection(TestInterface testInterface) {
         this.testInterface = testInterface;
     }
 
 
+//    @Autowired
 //    public void setTestInterface(TestInterface testInterface) {
 //        this.testInterface = testInterface;
 //    }

@@ -3,15 +3,16 @@ package com.spring.basic.order;
 import com.spring.basic.discount.DiscountPolicy;
 import com.spring.basic.member.Member;
 import com.spring.basic.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
+@Component
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
