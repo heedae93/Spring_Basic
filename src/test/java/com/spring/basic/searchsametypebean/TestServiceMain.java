@@ -23,7 +23,7 @@ public class TestServiceMain {
 
 
     // 아래 처럼 @Qualifier를 사용하면 @Qualifier에 지정한 이름과 같은 이름을 가진 빈을 찾아서 주입해준다.
-    public TestServiceMain(@Qualifier("testServiceImpl1") TestService testService) {
+    public TestServiceMain(@MainServiceAnnotation TestService testService) {
         this.testService = testService;
         System.out.println(testService);
     }
