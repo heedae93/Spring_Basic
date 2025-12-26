@@ -30,10 +30,10 @@ public class AutowiredTest {
 
         // Autowired는 기본값으로 required = true로 설정되어 있다. 따라서 해당 빈이 없으면 예외가 발생한다.
         // 아래 AutowiredMember2는 @Component가 붙지 않아 빈으로 등록되어 있지 않기 때문에 예외가 발생한다.
-//        @Autowired
-//        public void setNoBean2(AutowiredMember2 noBean1) {
-//            System.out.println("noBean1 = " + noBean1);
-//        }
+        @Autowired
+        public void setNoBean2(AutowiredMember2 noBean1) {
+            System.out.println("noBean1 = " + noBean1);
+        }
 
         // @Nullable을 사용하면 해당 빈이 없으면 null로 주입된다.
         // AutowiredMember는 @Component가 붙어 빈으로 등록되어 있기 때문에 정상적으로 주입된다.
