@@ -15,13 +15,14 @@ import org.springframework.context.annotation.FilterType;
 // 실무적으로는 이렇게 하지 않아도 된다.
 @Configuration
 @ComponentScan(
-        basePackages = "com.spring.member",
-        basePackageClasses = AutoAppConfig.class,
+        basePackages = "com.spring.basic.member",
+//        basePackageClasses = AutoAppConfig.class,
         excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Configuration.class))
 public class AutoAppConfig {
 
-    @Bean(name = "memoryMemberRepository")
-    public MemberRepository memberRepository() {
-        return new MemoryMemberRepository();
-    }
+    // 수동 빈 등록 vs 자동 빈 등록 충돌을 위한 의도적 오류 코드
+//    @Bean(name = "memoryMemberRepository")
+//    public MemberRepository memberRepository() {
+//        return new MemoryMemberRepository();
+//    }
 }
